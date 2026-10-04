@@ -238,13 +238,26 @@
   .tl-label{ font-size:13.5px; font-weight:700; margin-top:4px;}
   .tl-sub{ font-size:12.5px; color:var(--muted); }
 
-  .email-card{ background: var(--card-bg); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
-  .email-head{ background: linear-gradient(120deg, var(--brand-solid), var(--series-7)); color:#fff; padding:13px 24px; }
-  .email-head .subj-label{ font-size:11.5px; opacity:.85; letter-spacing:.06em; text-transform:uppercase; }
-  .email-head .subj{ font-size: clamp(16px,1.9vw,20px); font-weight:700; margin-top:5px; }
   .email-body{ padding:11px 24px; }
   .email-body p{ font-size:15px; max-width:none; margin-bottom:6px; line-height:1.44;}
   .email-section-label{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--series-1); margin:8px 0 3px;}
+
+  /* Compose-window chrome: makes the invite read as an email actually being drafted, not a text card */
+  .mail-window{ background: var(--card-bg); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 10px 28px rgba(0,0,0,.14); }
+  .mail-titlebar{ display:flex; align-items:center; gap:7px; padding:6px 16px; background:var(--chip-bg); border-bottom:1px solid var(--border); }
+  .mail-dot{ width:11px; height:11px; border-radius:50%; display:inline-block; }
+  .mail-dot.r{ background:#ff5f57; } .mail-dot.y{ background:#febc2e; } .mail-dot.g{ background:#28c840; }
+  .mail-title{ margin-left:7px; font-size:12.5px; font-weight:700; color:var(--text-secondary); letter-spacing:.02em; }
+  .mail-fields{ padding:6px 20px 0; }
+  .mail-field{ display:flex; gap:10px; padding:4px 0; border-bottom:1px solid var(--gridline); font-size:14px; }
+  .mail-field:last-child{ border-bottom:none; }
+  .mail-field-label{ flex:0 0 54px; color:var(--muted); font-weight:700; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; padding-top:2px; }
+  .mail-field-value{ color:var(--text-primary); }
+  .mail-field-value.mail-subject{ font-weight:700; font-size:15.5px; }
+  .mail-cover{ margin:10px 20px 0 !important; }
+  .mail-toolbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:7px 20px; border-top:1px solid var(--border); background:var(--chip-bg); }
+  .mail-send{ display:inline-flex; align-items:center; gap:6px; background:var(--brand-solid); color:#fff; border:none; border-radius:999px; padding:6px 18px; font-size:13.5px; font-weight:700; cursor:default; font-family:inherit; }
+  .mail-toolbar-icons{ font-size:15px; color:var(--muted); letter-spacing:7px; }
 
   .qa-item{ border-left:3px solid var(--series-8); padding:4px 0 4px 16px; margin-bottom:15px; }
   .qa-q{ font-weight:700; font-size:16px; margin-bottom:4px; }
@@ -699,14 +712,18 @@
         <div class="kicker"><span class="dot"></span>Part 2.2 · Speaker Invitation Email</div>
         <h1>Inviting the independent career coach</h1>
         <p class="muted">Also the real outreach message for Part 3's two-week validation, written once, used twice.</p>
-        <div class="email-card" style="margin-top:10px;">
-          <div class="email-head">
-            <div class="img-slot" style="width:min(100%,560px); height:auto; aspect-ratio:1584/672; border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.08); margin:0 auto 8px;">
-              <img src="./images:part2-2-cover.jpeg" alt="Email cover image" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
-              <div class="img-fallback"><span class="fname" style="color:#fff; background:rgba(255,255,255,.2);">images:part2-2-cover.jpeg</span><div class="fdesc" style="color:rgba(255,255,255,.8);">Cover image: warm, unposed mentor/coaching conversation</div></div>
-            </div>
-            <div class="subj-label">Subject</div>
-            <div class="subj">Speaker invite: Cake Talent Connect, the job-search gaps only you can see</div>
+        <div class="mail-window" style="margin-top:10px;">
+          <div class="mail-titlebar">
+            <span class="mail-dot r"></span><span class="mail-dot y"></span><span class="mail-dot g"></span>
+            <span class="mail-title">New Message</span>
+          </div>
+          <div class="mail-fields">
+            <div class="mail-field"><span class="mail-field-label">To</span><span class="mail-field-value">[Name] &lt;speaker@example.com&gt;</span></div>
+            <div class="mail-field"><span class="mail-field-label">Subject</span><span class="mail-field-value mail-subject">Speaker invite: Cake Talent Connect, the job-search gaps only you can see</span></div>
+          </div>
+          <div class="img-slot mail-cover" style="width:min(100%,560px); height:auto; aspect-ratio:1584/672;">
+            <img src="./images:part2-2-cover.jpeg" alt="Email cover image" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
+            <div class="img-fallback"><span class="fname">images:part2-2-cover.jpeg</span><div class="fdesc">Cover image: warm, unposed mentor/coaching conversation</div></div>
           </div>
           <div class="email-body">
             <p>Hi [Name],</p>
@@ -720,6 +737,10 @@
               <img src="./images:part2-2-inline.png" alt="Event flow inline image" loading="lazy" style="object-fit:contain; width:100%; height:100%;" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
               <div class="img-fallback"><span class="fname">images:part2-2-inline.png</span><div class="fdesc">Inline image, 4-step flow: health check → coach match → 1:1 → follow-up</div></div>
             </div>
+          </div>
+          <div class="mail-toolbar">
+            <button type="button" class="mail-send" tabindex="-1">Send ➤</button>
+            <span class="mail-toolbar-icons" aria-hidden="true">📎 🙂 ⋯</span>
           </div>
         </div>
       </div>
