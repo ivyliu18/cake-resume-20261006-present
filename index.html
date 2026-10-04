@@ -177,6 +177,15 @@
   .mini-flow{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:11px; }
   .mini-flow .mini-arrow{ color:var(--muted); font-weight:400; }
 
+  .compare-split{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:stretch; margin-top:16px; }
+  .compare-col{ background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+  .compare-col h4{ font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; margin:0 0 11px; }
+  .compare-col.win{ border-color:var(--brand-fill); background:color-mix(in srgb, var(--brand-fill) 7%, var(--card-bg)); }
+  .compare-col.win h4{ color:var(--brand-solid); }
+  .compare-row{ display:flex; align-items:flex-start; gap:9px; font-size:14.5px; color:var(--text-secondary); padding:5px 0; line-height:1.35; }
+  .compare-row .ci{ font-size:17px; line-height:1.2; flex-shrink:0; }
+  .compare-vs{ align-self:center; font-weight:800; color:var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+
   .growth-stairs{ display:flex; align-items:flex-end; gap:16px; margin: 32px 0 10px; }
   .stair{ flex:1; text-align:center; }
   .stair-bar{
@@ -652,32 +661,32 @@
           <div class="kpi-row">
             <div class="kpi-tile">
               <div class="kpi-label">Total cost</div>
-              <div class="kpi-value">NT$<span class="cu" data-cu-to="100">100</span>K</div>
-              <div class="kpi-sub">≈95,000–105,000</div>
+              <div class="kpi-value">NT$<span class="cu" data-cu-to="75">75</span>K</div>
+              <div class="kpi-sub">≈75,000</div>
             </div>
             <div class="kpi-tile">
               <div class="kpi-label">Total revenue</div>
-              <div class="kpi-value">NT$<span class="cu" data-cu-to="39">39</span>K</div>
-              <div class="kpi-sub">≈39,000, admission free</div>
+              <div class="kpi-value">NT$<span class="cu" data-cu-to="75">75</span>K</div>
+              <div class="kpi-sub">≈75,000, admission still free</div>
             </div>
           </div>
           <div class="barchart">
             <div class="bar-row">
               <div class="bar-row-label">Cost</div>
               <div class="bar-track">
-                <div class="bar-seg" tabindex="0" style="width:90.9%; background:var(--brand-fill);"
-                  data-title="Total cost ≈ NT$95,000–105,000"
-                  data-items="Venue (half-day, 200 cap)=NT$40,000|Speaker honoraria (4)=NT$20,000|Pilot coach fees (3–5, 2 hrs)=NT$15,000–25,000|Catering=NT$15,000|Print / signage / QR=NT$5,000"></div>
-                <span class="bar-value-label" style="left:90.9%;">≈100K</span>
+                <div class="bar-seg" tabindex="0" style="width:68.18%; background:var(--brand-fill);"
+                  data-title="Total cost ≈ NT$75,000"
+                  data-items="Venue (shared with an event partner, outside the 5 paying booths)=NT$15,000|Speaker honoraria (4)=NT$20,000|Pilot coach fees (4, 2 hrs)=NT$20,000|Catering=NT$15,000|Print / signage / QR=NT$5,000"></div>
+                <span class="bar-value-label" style="left:68.18%;">≈75K</span>
               </div>
             </div>
             <div class="bar-row">
               <div class="bar-row-label">Revenue</div>
               <div class="bar-track">
-                <div class="bar-seg" tabindex="0" style="width:35.45%; background:var(--series-7);"
-                  data-title="Total revenue ≈ NT$39,000"
-                  data-items="General admission=Free|Deep-dive coaching pass (30 slots)=NT$15,000|Partner booth fees (2–3)=NT$24,000"></div>
-                <span class="bar-value-label" style="left:35.45%;">≈39K</span>
+                <div class="bar-seg" tabindex="0" style="width:68.18%; background:var(--series-7);"
+                  data-title="Total revenue ≈ NT$75,000"
+                  data-items="General admission=Free|Deep-dive coaching pass (50 slots)=NT$30,000|Partner booth fees (5)=NT$45,000"></div>
+                <span class="bar-value-label" style="left:68.18%;">≈75K</span>
               </div>
             </div>
             <div class="bar-axis">
@@ -688,25 +697,25 @@
               <span style="left:90.9%;">100K</span>
             </div>
           </div>
-          <p class="muted" style="font-size:11.5px; margin-top:4px;">Hover or tab into a bar for the full line-item breakdown. Same scale, both bars, so the gap between cost and revenue reads honestly.</p>
+          <p class="muted" style="font-size:11.5px; margin-top:4px;">Hover or tab into a bar for the full line-item breakdown. Both bars land on the same mark: this is designed to break even, not to show a gap.</p>
         </div>
 
         <div class="grid2" style="margin-top:6px; gap:20px;">
           <table class="data">
             <tr><th>Cost item</th><th class="num">NT$</th></tr>
-            <tr><td>Venue (half-day, 200 cap)</td><td class="num">40,000</td></tr>
+            <tr><td>Venue (shared with an event partner, half-day, 200 cap)</td><td class="num">15,000</td></tr>
             <tr><td>Speaker honoraria (4)</td><td class="num">20,000</td></tr>
-            <tr><td>Pilot coach fees (3–5, 2 hrs)</td><td class="num">15,000–25,000</td></tr>
+            <tr><td>Pilot coach fees (4, 2 hrs)</td><td class="num">20,000</td></tr>
             <tr><td>Catering</td><td class="num">15,000</td></tr>
             <tr><td>Print / signage / QR</td><td class="num">5,000</td></tr>
-            <tr class="total-row"><td>Total cost</td><td class="num">≈95,000–105,000</td></tr>
+            <tr class="total-row"><td>Total cost</td><td class="num">≈75,000</td></tr>
           </table>
           <table class="data">
             <tr><th>Revenue item</th><th class="num">NT$</th></tr>
             <tr><td>General admission</td><td class="num">Free</td></tr>
-            <tr><td>Deep-dive coaching pass (30 slots)</td><td class="num">500 × 30 = 15,000</td></tr>
-            <tr><td>Partner booth fees (2–3)</td><td class="num">8,000 × 3 = 24,000</td></tr>
-            <tr class="total-row"><td>Total revenue</td><td class="num">≈39,000</td></tr>
+            <tr><td>Deep-dive coaching pass (50 slots)</td><td class="num">600 × 50 = 30,000</td></tr>
+            <tr><td>Partner booth fees (5)</td><td class="num">9,000 × 5 = 45,000</td></tr>
+            <tr class="total-row"><td>Total revenue</td><td class="num">≈75,000</td></tr>
           </table>
         </div>
       </div>
@@ -719,7 +728,7 @@
         <h1>Honest about the money, clear on the brand</h1>
         <div class="grid2">
           <div>
-            <p><strong>Breakeven:</strong> priced to roughly break even, not to profit. Real return is validation data. Levers if needed: 30→50 paid slots, 3→5 booths, both demand-driven.</p>
+            <p><strong>Breakeven:</strong> designed to land at breakeven, not profit. Three concrete moves get there: venue cost traded for an event partner's co-branded space (NT$40K → 15K), paid coaching slots 30 → 50, partner booths 3 → 5. All demand-driven, none assumed.</p>
             <p><strong>Branding:</strong> Cake community/newsletter under the wide topic + health-check popup + targeted email to low-score users. Secondary: 2–3 partner cross-promotion. Pre-event teaser content. Post-event: data feeds Part 3's validation.</p>
           </div>
           <div class="img-slot" style="height:clamp(180px,27vh,280px); width:auto; aspect-ratio:1376/768; margin:0 auto;">
@@ -791,7 +800,7 @@
           <div class="provable-item"><span class="pnum">3</span><span class="ptitle">How Cake pushes it</span><div class="ptext">Three-phase roadmap: 2-week concierge test → semi-automated + international tiers → full marketplace. Detail next.</div></div>
           <div class="provable-item"><span class="pnum">4</span><span class="ptitle">How it doesn't become the main line</span><div class="ptext">Stays an add-on to the resume platform, not a rebrand. Owned by Growth Ops validation, no new department. Public story stays "job platform."</div></div>
           <div class="provable-item"><span class="pnum">5</span><span class="ptitle">New partner channel</span><div class="ptext">Mandarin-language schools & education providers can take the same shape as Cake's Campus Ambassador programme: a coach-supply channel and an inbound channel to overseas Chinese-speaking job seekers.</div></div>
-          <div class="provable-item"><span class="pnum">6</span><span class="ptitle">Cost & execution</span><div class="ptext">NT$95–105K Phase 1 cost, zero engineering spend, two-week test, detailed on the next few slides.</div></div>
+          <div class="provable-item"><span class="pnum">6</span><span class="ptitle">Cost & execution</span><div class="ptext">NT$75K Phase 1 cost, designed to break even, zero engineering spend, two-week test, detailed on the next few slides.</div></div>
         </div>
       </div>
     </section>
@@ -801,8 +810,35 @@
       <div class="slide-inner">
         <div class="kicker"><span class="dot"></span>Part 3 · Not Invented From Scratch</div>
         <h1>AmazingTalker already proved the mechanism</h1>
-        <p>Tutor sets price, student books and pays, platform takes a declining commission (8–38%), scaled from language tutoring into K-12, music, and now career coaching from NT$200/session.</p>
-        <p>Cake doesn't need to invent a new model. It connects a proven one to something AmazingTalker structurally can't offer: <strong>real job listings.</strong> An AmazingTalker user still has to go apply on their own. Cake is already a job platform; coach matching plugs straight into real openings.</p>
+        <p class="lede" style="margin-bottom:4px;">Cake doesn't need to invent a new model, just connect a proven one to something AmazingTalker structurally can't offer.</p>
+
+        <div class="process-strip">
+          <div class="process-step"><div class="ps-icon">💰</div><div class="ps-label">Tutor sets price</div><div class="ps-text" style="font-size:15px;">Self-priced, no platform minimum</div></div>
+          <div class="process-step"><div class="ps-icon">📅</div><div class="ps-label">Books & pays</div><div class="ps-text" style="font-size:15px;">Student books directly on platform</div></div>
+          <div class="process-step"><div class="ps-icon">📉</div><div class="ps-label">Declining commission</div><div class="ps-text" style="font-size:15px;">8–38%, drops as volume grows</div></div>
+          <div class="process-step result"><div class="ps-icon">🚀</div><div class="ps-label">Already scaled</div><div class="ps-text" style="font-size:15px;">Language → K-12, music, career coaching (NT$200+/session)</div></div>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <div class="mini-flow">🧑‍🏫 Proven mechanism <span class="mini-arrow">→</span> ➕ Real job listings <span class="mini-arrow">→</span> 🎯 Complete path to an offer</div>
+          <strong>The gap AmazingTalker can't close:</strong> its users still have to go apply on their own. Cake is already a job platform; coach matching plugs straight into real openings.
+        </div>
+
+        <div class="compare-split">
+          <div class="compare-col">
+            <h4>104</h4>
+            <div class="compare-row"><span class="ci">🙋</span><span>Volunteer "giver" mentors, unpaid</span></div>
+            <div class="compare-row"><span class="ci">🧩</span><span>Side feature, not core product</span></div>
+            <div class="compare-row"><span class="ci">❓</span><span>No quality gate</span></div>
+          </div>
+          <div class="compare-vs">vs</div>
+          <div class="compare-col win">
+            <h4>This model</h4>
+            <div class="compare-row"><span class="ci">💳</span><span>Paid, revenue-share</span></div>
+            <div class="compare-row"><span class="ci">🎯</span><span>Routed from the user's own health-check score</span></div>
+            <div class="compare-row"><span class="ci">🔗</span><span>Tied to real job listings</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -877,7 +913,7 @@
         </table>
         <h3 style="margin-top:18px;">Resources</h3>
         <div class="chiprow">
-          <span class="chip">Phase 1: 1 person · ≈NT$95–105K · no new hire</span>
+          <span class="chip">Phase 1: 1 person · ≈NT$75K, breakeven · no new hire</span>
           <span class="chip">Phase 2: light product + finance/legal support</span>
           <span class="chip">Phase 3: full build, only after 1–2 validate</span>
         </div>
@@ -894,6 +930,7 @@
           <li>Explicit opt-in for referrals, never pre-checked.</li>
           <li>Any external conversion claim needs real data behind it, never a story first, numbers later.</li>
           <li>Placement/conversion rate tracked from day one (Launch Academy's 2024 enrolment pause is the cautionary case).</li>
+          <li><strong>Coach vetting, phased by cost:</strong> career coaching isn't a licensed profession in Taiwan, so screening is designed, not assumed. Phase 1: interview, placement track record, and credentials where they exist, weighted toward coaches sourced through already-vetted networks (the same partner channels as the booth partners). Phase 2+: a checklist-gated onboarding, verified credentials required before a coach can accept a referral.</li>
           <li><strong>Stays a side-channel:</strong> an add-on to the resume platform, never the headline. If it ever competes with Cake's core identity for attention, that's a signal to slow down, not scale up.</li>
         </ul>
       </div>
