@@ -190,6 +190,42 @@
   .img-slot.img-missing .img-fallback{ display:block; }
   .img-slot.short{ height: clamp(100px, 15vh, 160px); }
 
+  /* ---- speaker-candidate template: generic row + "real example" popup ----
+     The table row itself stays a reusable template (role / talk / why); clicking
+     "See a real example" opens a modal with one concrete, real candidate as proof
+     the template isn't hypothetical. Reuse this same button+modal pattern for any
+     future speaker slot by swapping the modal's id and content. */
+  .example-btn{
+    display:inline-flex; align-items:center; gap:4px; margin-top:5px;
+    font-size:12.5px; font-weight:700; color:var(--series-1); background:transparent;
+    border:1px solid var(--series-1); border-radius:999px; padding:3px 10px; cursor:pointer;
+    font-family:inherit; line-height:1.3;
+  }
+  .example-btn:hover{ background: rgba(27,175,122,.08); }
+
+  .modal-overlay{
+    display:none; position:fixed; inset:0; z-index:500;
+    background: rgba(10,10,10,.6); align-items:center; justify-content:center; padding:4vh 4vw;
+  }
+  .modal-overlay.show{ display:flex; }
+  .modal-card{
+    background: var(--surface-1); border:1px solid var(--border); border-radius:16px;
+    max-width: 780px; width:100%; max-height:92vh; overflow-y:auto; padding:24px 28px;
+    position:relative; box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  }
+  .modal-close{
+    position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:999px;
+    border:1px solid var(--border); background:var(--chip-bg); color:var(--text-primary);
+    font-size:16px; cursor:pointer; line-height:1;
+  }
+  .modal-card h3{ margin-top:0; font-size:19px; }
+  .modal-sub{ font-size:13px; color:var(--muted); margin-top:-6px; margin-bottom:14px; }
+  .modal-shots{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:14px 0; }
+  .modal-shots .img-slot{ flex:0 1 480px; width:100%; height:clamp(220px,40vh,400px); aspect-ratio:auto; }
+  .modal-shots .img-slot img{ object-fit:contain; }
+  .modal-note{ font-size:14px; line-height:1.6; color:var(--text-secondary); margin:10px 0; }
+  .modal-note strong{ color:var(--text-primary); }
+
   .timeline{ display:flex; gap:0; margin: 22px 0 10px; }
   .tl-step{ flex:1; text-align:center; position:relative; padding-top:28px;}
   .tl-step:before{
@@ -283,7 +319,7 @@
   <div id="topbar">
     <div class="section-nav" id="sectionNav"></div>
     <div id="progress-track"><div id="progress-bar"></div></div>
-    <div id="counter">1 / 28</div>
+    <div id="counter">1 / 27</div>
   </div>
 
   <div id="stage">
@@ -561,7 +597,7 @@
           <tr><th>Speaker</th><th>Talk</th><th>Why</th></tr>
           <tr><td>Cake AI product / data lead</td><td>What 100K health checks tell us, and don't</td><td>Opens with Cake's own data; builds credibility</td></tr>
           <tr><td>Independent career coach (pilot)</td><td>What a coach sees that AI can't</td><td>Also Part 3's validation target: the invite is the first step</td></tr>
-          <tr><td>Recently successful career-changer</td><td>What actually got me moving</td><td>Real stories convert; concept talks don't</td></tr>
+          <tr><td>Recently successful career-changer<br><button type="button" class="example-btn" onclick="openSpeakerExample()">👀 See a real example ↗</button></td><td>What actually got me moving</td><td>Real stories convert; concept talks don't</td></tr>
           <tr><td>(Pipeline) International speaker</td><td>Translating Taiwan experience globally</td><td>Plants the Phase 2 international track</td></tr>
         </table>
       </div>
@@ -680,7 +716,7 @@
             <div class="email-section-label">What's in it for you</div>
             <p>A 10-minute talk, plus a 2-hour on-site 1:1 slot (we cover your rate). 150–200 attendees who already know they need help, not a free-talk crowd that walks out after. This is the start of an ongoing way to reach Cake users, not a one-off ask.</p>
             <p>Hope to hear from you.<br>[Name] · Cake Growth Operations</p>
-            <div class="img-slot" style="width:min(100%,560px); height:clamp(90px,15vh,150px); margin:8px auto 0; background:var(--card-bg);">
+            <div class="img-slot" style="width:min(100%,640px); height:clamp(140px,24vh,230px); margin:8px auto 0; background:var(--card-bg);">
               <img src="./images:part2-2-inline.png" alt="Event flow inline image" loading="lazy" style="object-fit:contain; width:100%; height:100%;" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
               <div class="img-fallback"><span class="fname">images:part2-2-inline.png</span><div class="fdesc">Inline image, 4-step flow: health check → coach match → 1:1 → follow-up</div></div>
             </div>
@@ -843,6 +879,26 @@
 
   </div>
 
+  <!-- Speaker-candidate example modal: generic template row above + one real,
+       concrete candidate shown here as proof of concept. Reusable pattern —
+       swap content/images to add more "real example" popups later. -->
+  <div class="modal-overlay" id="speakerExampleModal" onclick="if(event.target===this) closeSpeakerExample();">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeSpeakerExample()" aria-label="Close">✕</button>
+      <h3>Real example: "recently successful career-changer" speaker</h3>
+      <div class="modal-sub">Illustrative candidate — not yet contacted. Shown here to prove the template row is a real, findable profile, not a hypothetical.</div>
+      <div class="modal-shots">
+        <div class="img-slot">
+          <img src="./images:part2-1-speaker-example-2.png" alt="Example speaker candidate: Threads profile" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
+          <div class="img-fallback"><span class="fname">images:part2-1-speaker-example-2.png</span><div class="fdesc">Screenshot: Threads profile, "Frida | 海外工作 x 轉職外商" · 12.2K followers · 727K recent views</div></div>
+        </div>
+      </div>
+      <p class="modal-note"><strong>Why invite her:</strong> private-university English major who self-taught English typing into a seat at Google Singapore, 11 years across London, Bangkok, and Singapore. That's exactly the "career-changer into a tech MNC" arc Cake's own job listings can plug straight into — the audience's first reaction is curiosity about how she made that jump, not whether the story is relevant.</p>
+      <p class="modal-note"><strong>What's in it for her:</strong> she already runs her own career community (an "international career" newsletter and community, 12K+ followers), so she's actively looking for more reach and higher-quality leads. A speaking credit backed by Cake adds institutional endorsement to her personal brand, not just a one-off favor.</p>
+      <p class="modal-note" style="font-size:12.5px; color:var(--muted);">Template for reuse: role → one-line hook that creates audience curiosity → the concrete benefit to the speaker, backed by a real, public profile.</p>
+    </div>
+  </div>
+
   <div id="bottombar">
     <div class="bottom-left">
       <button class="ctrl-btn" id="prevBtn">← Prev</button>
@@ -980,7 +1036,16 @@
   document.getElementById('nextBtn').addEventListener('click', next);
   document.getElementById('prevBtn').addEventListener('click', prev);
 
+  /* ---- speaker-candidate example modal ---- */
+  var speakerExampleModal = document.getElementById('speakerExampleModal');
+  window.openSpeakerExample = function(){ speakerExampleModal.classList.add('show'); };
+  window.closeSpeakerExample = function(){ speakerExampleModal.classList.remove('show'); };
+
   window.addEventListener('keydown', function(e){
+    if (speakerExampleModal.classList.contains('show')){
+      if (e.key === 'Escape') closeSpeakerExample();
+      return; /* modal open: don't let arrow keys flip slides underneath it */
+    }
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { next(); e.preventDefault(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { prev(); e.preventDefault(); }
     else if (e.key === 'Home') { goTo(0); }
