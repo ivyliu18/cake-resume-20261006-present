@@ -118,15 +118,18 @@
 
   .kicker{
     display:inline-flex; align-items:center; gap:8px;
-    font-size:14px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
-    color: var(--series-1); margin-bottom:12px;
+    font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color: var(--series-1); margin-bottom:16px;
+    background: color-mix(in srgb, var(--brand-fill) 13%, transparent);
+    border:1px solid color-mix(in srgb, var(--brand-fill) 26%, transparent);
+    padding:6px 14px 6px 11px; border-radius:999px;
   }
-  .kicker .dot{ width:7px; height:7px; border-radius:50%; background: var(--series-1); }
-  h1{ font-size: clamp(30px,4.3vw,47px); line-height:1.14; margin:0 0 12px; letter-spacing:-0.01em; }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--brand-fill); flex:0 0 auto; }
+  h1{ font-size: clamp(32px,4.4vw,51px); line-height:1.14; margin:0 0 14px; letter-spacing:-0.01em; }
   h2{ font-size: clamp(22px,2.7vw,29px); margin: 22px 0 10px; }
   h3{ font-size: 18px; margin: 18px 0 7px; color: var(--text-secondary); font-weight:700;}
-  p{ font-size: clamp(17px,1.7vw,21px); line-height:1.58; color: var(--text-secondary); margin:0 0 12px; max-width: 76ch;}
-  .lede{ font-size: clamp(19px,2.1vw,23px); color: var(--text-primary); max-width:76ch; }
+  p{ font-size: clamp(18px,1.75vw,23px); line-height:1.6; color: var(--text-secondary); margin:0 0 13px; max-width: 76ch;}
+  .lede{ font-size: clamp(20px,2.15vw,25px); color: var(--text-primary); max-width:76ch; }
   ul.clean{ margin:0 0 12px; padding-left:1.1em; }
   ul.clean li{ font-size: clamp(16px,1.6vw,18.5px); color:var(--text-secondary); margin-bottom:8px; line-height:1.5;}
   strong{ color: var(--text-primary); }
@@ -151,21 +154,41 @@
   .badge.good{ background: rgba(12,163,12,.12); color: var(--good); }
   .badge.gap{ background: rgba(227,73,72,.12); color: var(--series-8); }
 
-  table.data{ width:100%; border-collapse:collapse; font-size:14.5px; }
-  table.data th, table.data td{ text-align:left; padding:5px 10px; border-bottom:1px solid var(--gridline); vertical-align:top;}
-  table.data th{ color:var(--muted); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em;}
+  table.data{ width:100%; border-collapse:separate; border-spacing:0; font-size:14.5px; background:var(--card-bg); border:1px solid var(--border); border-radius:14px; }
+  table.data th, table.data td{ text-align:left; padding:9px 15px; border-bottom:1px solid var(--gridline); vertical-align:top;}
+  table.data th{ color:var(--muted); font-weight:700; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; background:var(--chip-bg); }
+  table.data th:first-child{ border-top-left-radius:14px; }
+  table.data th:last-child{ border-top-right-radius:14px; }
   table.data tr:last-child td{ border-bottom:none; }
+  table.data tr:last-child td:first-child{ border-bottom-left-radius:14px; }
+  table.data tr:last-child td:last-child{ border-bottom-right-radius:14px; }
   table.data td.num{ font-variant-numeric: tabular-nums; white-space:nowrap; }
   .total-row td{ font-weight:700; color:var(--text-primary); border-top:2px solid var(--text-primary); }
 
   /* ---- condensed story layout ---- */
   .process-strip{ display:flex; gap:0; margin: 18px 0 6px; border-radius:14px; overflow:hidden; border:1px solid var(--border); flex-wrap:wrap;}
-  .process-step{ flex:1 1 200px; padding:16px 16px; border-right:1px solid var(--border); background:var(--card-bg); }
+  .process-step{ flex:1 1 200px; padding:18px 16px; border-right:1px solid var(--border); background:var(--card-bg); }
   .process-step:last-child{ border-right:none; }
   .process-step.result{ background: rgba(27,175,122,.09); }
+  .ps-icon{ font-size:22px; line-height:1; margin-bottom:9px; }
   .ps-label{ font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; margin-bottom:7px;}
   .ps-text{ font-size:17.5px; font-weight:700; color:var(--text-primary); line-height:1.35;}
   .ps-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:4px;}
+  .mini-flow{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:11px; }
+  .mini-flow .mini-arrow{ color:var(--muted); font-weight:400; }
+
+  .growth-stairs{ display:flex; align-items:flex-end; gap:16px; margin: 32px 0 10px; }
+  .stair{ flex:1; text-align:center; }
+  .stair-bar{
+    height: var(--h,70px); border-radius:12px 12px 5px 5px;
+    background: linear-gradient(180deg, var(--brand-fill), var(--brand-solid));
+    display:flex; align-items:flex-start; justify-content:center; padding-top:12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.08);
+  }
+  .stair-bar.alt{ background: linear-gradient(180deg, var(--series-7), #372a85); }
+  .stair-icon{ font-size:23px; line-height:1; }
+  .stair-label{ font-size:14.5px; font-weight:700; color:var(--text-primary); margin-top:11px; }
+  .stair-sub{ font-size:12.5px; color:var(--muted); margin-top:2px; }
   .stat-hero{ font-size: clamp(30px,4.6vw,44px); font-weight:800; color:var(--series-1); line-height:1.05; }
   .stat-hero.good{ color:var(--good); }
   .chiprow{ margin:10px 0 6px; }
@@ -343,7 +366,7 @@
         <div class="kicker" style="justify-content:center;"><span class="dot"></span>Cake · Growth Operations Specialist · Final Presentation</div>
         <h1 style="font-size:clamp(34px,5.8vw,58px);">AI can see the problem.<br>Only a human sees <em>you</em>.</h1>
         <p class="lede" style="margin:0 auto;">A proposal for Cake's Talent Connect and next quantum leap, built the same way I solve every problem: find the root cause, then act.</p>
-        <div class="img-slot" style="width:auto; height:clamp(260px,38vh,420px); aspect-ratio:1376/768; margin:22px auto 0;">
+        <div class="img-slot" style="width:auto; height:clamp(190px,26vh,280px); aspect-ratio:1376/768; margin:22px auto 0;">
           <img src="./images:title-hero.jpeg" alt="Title hero visual" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('img-missing');">
           <div class="img-fallback"><span class="fname">images:title-hero.jpeg</span><div class="fdesc">Optional hero visual (abstract, not required)</div></div>
         </div>
@@ -559,11 +582,11 @@
         <div class="kicker"><span class="dot"></span>What I noticed · Where this scales</div>
         <h1>Same gap, company scale</h1>
         <p>Part 2 is this gap's small, live-event-scale test. Part 3 asks the bigger question: if the gap is real, what does closing it look like at the scale of Cake's business growth?</p>
-        <div class="timeline">
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-label">Journey gap</div><div class="tl-sub">Part 1 → here</div></div>
-          <div class="tl-step alt"><div class="tl-dot"></div><div class="tl-label">The observation</div><div class="tl-sub">AI sees it, can't close it</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-label">Part 2</div><div class="tl-sub">Live validation event</div></div>
-          <div class="tl-step alt"><div class="tl-dot"></div><div class="tl-label">Part 3</div><div class="tl-sub">Quantum leap plan</div></div>
+        <div class="growth-stairs">
+          <div class="stair"><div class="stair-bar" style="--h:66px;"><span class="stair-icon">🔍</span></div><div class="stair-label">Journey gap</div><div class="stair-sub">Part 1 → here</div></div>
+          <div class="stair"><div class="stair-bar alt" style="--h:104px;"><span class="stair-icon">💡</span></div><div class="stair-label">The observation</div><div class="stair-sub">AI sees it, can't close it</div></div>
+          <div class="stair"><div class="stair-bar" style="--h:142px;"><span class="stair-icon">🎤</span></div><div class="stair-label">Part 2</div><div class="stair-sub">Live validation event</div></div>
+          <div class="stair"><div class="stair-bar alt" style="--h:180px;"><span class="stair-icon">🚀</span></div><div class="stair-label">Part 3</div><div class="stair-sub">Quantum leap plan</div></div>
         </div>
       </div>
     </section>
@@ -574,13 +597,14 @@
         <div class="kicker"><span class="dot"></span>What I noticed · Why these users, specifically</div>
         <h1>Proof, not a new bet</h1>
         <div class="process-strip">
-          <div class="process-step"><div class="ps-label">Who</div><div class="ps-text">Entry-level & career-changers</div></div>
-          <div class="process-step"><div class="ps-label">Why them</div><div class="ps-text">Not who recruiters chase directly</div></div>
-          <div class="process-step"><div class="ps-label">Risk if ignored</div><div class="ps-text">Quiet failure → quiet drift off Cake</div></div>
-          <div class="process-step result"><div class="ps-label">The move</div><div class="ps-text">AI done → add the human layer</div></div>
+          <div class="process-step"><div class="ps-icon">👤</div><div class="ps-label">Who</div><div class="ps-text">Entry-level & career-changers</div></div>
+          <div class="process-step"><div class="ps-icon">🎯</div><div class="ps-label">Why them</div><div class="ps-text">Not who recruiters chase directly</div></div>
+          <div class="process-step"><div class="ps-icon">⚠️</div><div class="ps-label">Risk if ignored</div><div class="ps-text">Quiet failure → quiet drift off Cake</div></div>
+          <div class="process-step result"><div class="ps-icon">🤝</div><div class="ps-label">The move</div><div class="ps-text">AI done → add the human layer</div></div>
         </div>
         <p style="margin-top:14px;">These are users Cake already has, not a new acquisition channel. Monetizing people the health check already reached is proof this isn't wasted investment; it's a second pass at value already paid for.</p>
         <div class="card">
+          <div class="mini-flow">🤖 AI diagnosis <span class="mini-arrow">→</span> 🤝 + human layer <span class="mini-arrow">→</span> 🔁 Cake becomes peer-to-peer</div>
           <strong>Positioning:</strong> AI diagnosis is built. The next step is a human layer on top of it: Cake moving toward peer-to-peer, the way Uber connects a rider and a driver instead of owning cars. Same shift, for career coaching.
         </div>
       </div>
